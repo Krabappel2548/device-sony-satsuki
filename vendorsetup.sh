@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo aosp_e6853-userdebug
-add_lunch_combo aosp_e6883-userdebug
+add_lunch_combo omni_e6853-userdebug
+add_lunch_combo omni_e6883-userdebug

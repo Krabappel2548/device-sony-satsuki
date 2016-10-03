@@ -12,12 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include device/sony/kitakami-common/PlatformConfigOmni.mk
+# Bootanimation
+TARGET_BOOTANIMATION_SIZE := 1080x608
 
-TARGET_BOOTLOADER_BOARD_NAME := E6853
+# Inherit AOSP Satsuki common device parts
+$(call inherit-product, device/sony/satsuki/aosp_e6853.mk)
 
-WIFI_BUS := PCIE
+# Inherit Omni GSM telephony parts
+PRODUCT_PROPERTY_OVERRIDES += telephony.lteOnGSMDevice=1
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
-BOARD_KERNEL_CMDLINE += androidboot.hardware=satsuki
+# Override Product Name for OmniROM
+PRODUCT_NAME := omni_satsuki
+PRODUCT_MODEL := Xperia Z5 Premium
 
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
+# Assert
+TARGET_OTA_ASSERT_DEVICE := E6853,satsuki
